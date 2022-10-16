@@ -5,12 +5,14 @@ class ProfilesController < ApplicationController
   end
 
   def update
+    binding.pry
+    respond_to do |format|
       if @user.update(user_params)
-        redirect_to profile_path,success: "ユーザーを更新しました"
+        format.html { redirect_to profile_url(@user), notice: "ユーザーを更新しました"}
       else
-        flash.now[:danger] = "ユーザーを更新できませんでした"
-        render :edit
+        format.html { render :edit, status: :unprocessable_entity }
       end
+    end
   end
 
   private
