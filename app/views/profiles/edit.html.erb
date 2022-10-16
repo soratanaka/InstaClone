@@ -1,10 +1,20 @@
 <%= form_with model: @user, url: profile_path, local: true do |f| %>
-  <%= f.label :email %>
-  <%= f.email_field :email, class: 'form-control mb-3' %>
+  
+  <div class="field">
+    <%= f.label :email %>
+    <%= f.email_field :email, class: 'form-control mb-3' %>
+  </div>
 
-  <%= f.label :avatar %>
-  <%= f.file_field :avatar,class: 'form-control mb-3' %>
-  <%= f.hidden_field :avatar_cache %>
+  <div class="field">
+    <%= f.label :avatar %>
+    <%= f.file_field :avatar,class: 'form-control mb-3' %>
+    <%= f.hidden_field :avatar_cache %>
+  </div>
+
+  <div class="field">
+    <%= f.label :plofile %>
+    <%= f.text_area :plofile %>
+  </div>
 
   <%= f.submit "更新", class: "btn btn-primary"%>
 <%end%>

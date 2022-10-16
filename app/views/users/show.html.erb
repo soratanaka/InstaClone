@@ -1,6 +1,16 @@
+
 <h1><%= @user.name %>のページ</h1>
 
 <%= image_tag @user.avatar.url %>
+
+<p>
+  <strong>"自己紹介"</strong>
+  <% if @user.plofile.present? %>
+    <%= @user.plofile %>
+  <% else %>
+    <p>無記入<p>
+  <% end %>
+</p>
 
 <p>メールアドレス: <%= @user.email %></p>
 

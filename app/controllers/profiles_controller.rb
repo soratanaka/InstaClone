@@ -5,10 +5,9 @@ class ProfilesController < ApplicationController
   end
 
   def update
-    binding.pry
     respond_to do |format|
       if @user.update(user_params)
-        format.html { redirect_to profile_url(@user), notice: "ユーザーを更新しました"}
+        format.html { redirect_to user_url(@user), notice: "ユーザーを更新しました"}
       else
         format.html { render :edit, status: :unprocessable_entity }
       end
@@ -21,6 +20,6 @@ class ProfilesController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit(:email,:avatar,:avatar_cache)
+    params.require(:user).permit(:email,:avatar,:avatar_cache,:plofile)
   end
 end
