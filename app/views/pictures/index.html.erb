@@ -15,9 +15,10 @@
     <td class="post.content"><%= post.content %></td>
     <td class="post_img"><%= image_tag post.image.url, style:'width:400px;height:240px' if post.image_url %></td>
     <td><%= link_to '詳細を確認する', picture_path(post.id), class: "btn btn-secondary" %></td>
-    <td><%= link_to 'ポストを編集する', edit_picture_path(post.id), data: { confirm: '本当に編集していいですか？' }, class: "btn btn-dark" %>
-    </td>
+    <% if logged_in? && current_user.id == post.user_id %>
+    <td><%= link_to 'ポストを編集する', edit_picture_path(post.id), data: { confirm: '本当に編集していいですか？' }, class: "btn btn-dark" %></td>
     <td><%= link_to 'ポストを削除する', picture_path(post.id), method: :delete, data: { confirm: '本当に削除していいですか？' }, class: "btn btn-danger" %></td>
+    <% end %>
   </tr>
 <% end %>
 </table>

@@ -1,6 +1,7 @@
 class ProfilesController < ApplicationController
     before_action :set_user,only: %i[edit update]
-
+    before_action :forbid_login_user, {only: [:top]}
+    
   def edit
   end
 
