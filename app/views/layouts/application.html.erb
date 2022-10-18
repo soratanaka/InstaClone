@@ -20,9 +20,11 @@
       <%= link_to "ログアウト", session_path(current_user.id), method: :delete %>
       <%= link_to "新しい投稿", new_picture_path(current_user.id) %>
       <%= link_to "投稿一覧", pictures_path(current_user.id) %>
+      <%= link_to 'お問合せ', new_contact_path %>
     <% else %>
       <%= link_to "Sign up", new_user_path %>
       <%= link_to "Login", new_session_path %>
+      <%= link_to 'お問合せ', new_contact_path %>
     <% end %>
 
     <%= yield %>
