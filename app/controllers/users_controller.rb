@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   skip_before_action :login_required, only: [:new, :create]
   before_action :autheniticate_user, {only: [:edit, :update]}
-  before_action :forbid_login_user, {only: [:name, :create, :login_form, :login]}
+  before_action :fobid_login_user, {only: [:name, :create, :login_form, :login]}
   before_action :ensure_current_user, {only: [:edit, :update]}
 
   def new
