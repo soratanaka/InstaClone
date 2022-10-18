@@ -1,6 +1,5 @@
 class PicturesController < ApplicationController
   before_action :set_picture, only: %i[ show edit update destroy ]
-  before_action :baria_user, only: [:edit, :destroy]
 
   def index
     @pictures = Picture.all
@@ -64,13 +63,5 @@ class PicturesController < ApplicationController
   def picture_params
   params.require(:picture).permit(:image, :image_cache, :content).merge(user_id:current_user.id)
   end
-
-  private
-    def baria_user
-      unless Picture.find_by(public_uid: params[:id]).user_id == current_user.id
-        flash[:notice] = "権限がありません"
-        redirect_to pictures_path
-      end
-    end
 
 end
