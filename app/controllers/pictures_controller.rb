@@ -27,9 +27,10 @@ class PicturesController < ApplicationController
 
   def create
     @picture = Picture.new(picture_params)
-
+    @user = User.find(picture_params[:user_id])
     respond_to do |format|
       if @picture.save
+        PictuerMailer.post_mail(@picture,@user).deliver
         format.html { redirect_to picture_url(@picture), notice: "Picture was successfully created." }
       else
         format.html { render :new, status: :unprocessable_entity }
