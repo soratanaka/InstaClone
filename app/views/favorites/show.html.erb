@@ -1,0 +1,13 @@
+<h1>お気に入り一覧のページ</h1>
+
+<% if @favorite_list.present? %>
+  <% @favorite_list.each do |favorite| %>
+    <td><p class="post_name"><%= favorite.user.name %></p></td>
+      <td class="post.content"><%= favorite.content %></td>
+      <% if favorite.image.url.present? %>
+        <td class="post_img"><%= image_tag favorite.image.url, style:'width:400px;height:240px' if favorite.image_url %></td>
+      <% end %>
+  <% end %>
+<% else %>
+  <h2>お気に入り登録がありません</h2>
+<% end %>

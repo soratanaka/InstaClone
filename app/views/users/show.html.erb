@@ -1,6 +1,10 @@
 
 <h1><%= @user.name %>のページ</h1>
 
+<% if @user.id==@current_user.id %>
+<%= link_to '編集', edit_profile_path, class: 'btn btn-success float-right' %>
+<% end %>
+
 <%= image_tag @user.avatar.url %>
 
 <p>
@@ -14,6 +18,5 @@
 
 <p>メールアドレス: <%= @user.email %></p>
 
-<% if @user.id==@current_user.id %>
-<%= link_to '編集', edit_profile_path, class: 'btn btn-success float-right' %>
-<% end %>
+
+<%= link_to 'お気に入り一覧', favorite_path %>
