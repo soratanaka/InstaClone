@@ -11,23 +11,33 @@
   </head>
 
   <body>
+
     <% flash.each do |key, value| %>
       <%= content_tag(:div, value, class: "#{key}") %>
     <% end %>
-
+  <header class="header clearfix">
     <% if logged_in? %>
-      <%= link_to "マイページ", user_path(current_user.id) %>
-      <%= link_to "ログアウト", session_path(current_user.id), method: :delete %>
-      <%= link_to "新しい投稿", new_picture_path(current_user.id) %>
-      <%= link_to "投稿一覧", pictures_path(current_user.id) %>
-      <%= link_to 'お問合せ', new_contact_path %>
+      <ul class="top_menu clearfix">
+        <li><%= link_to "マイページ", user_path(current_user.id) ,class:'top_list' %></li>
+        <li><%= link_to "ログアウト", session_path(current_user.id), method: :delete ,class:'top_list' %></li>
+        <li><%= link_to "新しい投稿", new_picture_path(current_user.id) ,class:'top_list' %></li>
+        <li><%= link_to "投稿一覧", pictures_path(current_user.id) ,class:'top_list' %></li>
+        <li><%= link_to 'お問合せ', new_contact_path ,class:'top_list' %></li>
+      </ul>
     <% else %>
-      <%= link_to "Sign up", new_user_path %>
-      <%= link_to "Login", new_session_path %>
-      <%= link_to 'お問合せ', new_contact_path %>
+      <ul class="top_menu clearfix">
+        <li><%= link_to "Sign up", new_user_path ,class:'top_list' %></li>
+        <li><%= link_to "Login", new_session_path ,class:'top_list' %></li>
+        <li><%= link_to 'お問合せ', new_contact_path ,class:'top_list' %></li>
+      </ul>
     <% end %>
-
+  </header>
+  <div class="text-center">
     <%= yield %>
+  </div>
+  <footer class="footer">
+    <p>Make Sora Tanaka from Dive InTo Code</p>
+  </footer>
   </body>
 </html>
 </html>
