@@ -3,6 +3,11 @@ class ProfilesController < ApplicationController
     before_action :forbid_login_user, {only: [:top]}
     
   def edit
+    if @user.id == current_user.id
+      render "edit"
+    else
+      redirect_to user_url(@user)
+    end
   end
 
   def update
