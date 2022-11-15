@@ -21,7 +21,7 @@ CarrierWave.configure do |config|
       config.fog_directory = 'aws-instaclone'
       config.asset_host = 'https://s3-ap-northeast-1.amazonaws.com/aws-instaclone'
     when 'development'
-      config.fog_directory = 'aws-instaclone'
-      config.asset_host = 'https://s3-ap-northeast-1.amazonaws.com/aws-instaclone'
+      config.fog_directory = 'aws-instaclone-development'
+      config.asset_host = 'https://s3-ap-northeast-1.amazonaws.com/aws-instaclone-development'
   end
 end
