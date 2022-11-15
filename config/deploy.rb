@@ -74,11 +74,15 @@ namespace :deploy do
     end
   end
 
-  after :restart, :clear_cache do
-    on roles(:web), in: :groups, limit: 3, wait: 10 do
-    end
+  after 'deploy:publishing', 'deploy:restart'
+    namespace :deploy do
+    task :restart do
+    invoke 'unicorn:restart'
   end
 
   after :publishing, :restart
 
-end
+  after :restart, :clear_cache do
+    on roles(:web), in: :groups, limit: 3, wait: 10 do
+    end
+  end
