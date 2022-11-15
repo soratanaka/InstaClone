@@ -23,7 +23,6 @@ gem 'fog-aws'
 gem 'dotenv-rails'
 gem 'unicorn' # アプリケーションサーバのunicorn
 
-
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'capistrano', '3.16.0' # capistranoのツール一式
